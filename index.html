@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブレイクスルー体験セッション | 事業も、人生も、もうひとつ上の景色へ。</title>
+  <meta name="description" content="止まっていた思考と行動が、動き出す90分。ビジョン・価値観・思考パターンを整理し、次のステージへの突破口を見つける体験セッション。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&family=Shippori+Mincho:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== ヒーロースライドショー ===== */
+    @keyframes heroPan {
+      0%   { transform: scale(1.08) translateX(24px); }
+      100% { transform: scale(1.03) translateX(-8px); }
+    }
+
+    /* ===== スクロールフェードアップ ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.85s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.12s; }
+    .fade-up.delay-2 { transition-delay: 0.24s; }
+    .fade-up.delay-3 { transition-delay: 0.36s; }
+    .fade-up.delay-4 { transition-delay: 0.48s; }
+
+    /* ===== カラー変数 ===== */
+    :root {
+      --coral: #C97060;
+      --coral-light: #F0DDD5;
+      --coral-dark: #A8574A;
+      --cream: #FAF6EF;
+      --cream-dark: #EDE6D8;
+      --navy: #2A3545;
+      --navy-mid: #3D4F65;
+      --gray-light: #E8E3D8;
+      --gray-mid: #B0A89E;
+      --text: #2C2825;
+      --text-muted: #7A6E68;
+      --border: #E0D9CE;
+      --white: #FFFFFF;
+    }
+
+    /* ===== 共通パーツ ===== */
+    .section { padding: 64px 20px; }
+    .section--cream { background: var(--cream-dark); }
+    .section--white { background: var(--white); }
+    .container { max-width: 680px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      color: var(--coral);
+      text-transform: lowercase;
+      margin-bottom: 14px;
+    }
+    .section-heading {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: clamp(20px, 5vw, 28px);
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: var(--coral);
+      border-radius: 0;
+      margin: 20px 0 36px;
+    }
+
+    /* ===== CTAボタン ===== */
+    .cta-wrap { text-align: center; margin-top: 40px; }
+    .cta-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .btn-cta {
+      display: inline-block;
+      background: var(--coral);
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 18px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201, 112, 96, 0.35);
+      min-height: 56px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .btn-cta:hover { background: var(--coral-dark); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(201, 112, 96, 0.45); }
+    .btn-cta:active { transform: translateY(0); }
+
+    /* ===== 1. ファーストビュー ===== */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      background: var(--navy);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0;
+      transition: opacity 2.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center center;
+      will-change: transform, opacity;
+    }
+    .hero-slide.active {
+      opacity: 0.65;
+      animation: heroPan 7s ease-in-out forwards;
+    }
+    #hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(28,38,52,0.88) 0%,
+        rgba(28,38,52,0.65) 38%,
+        rgba(28,38,52,0.0) 55%,
+        rgba(28,38,52,0.0) 100%
+      );
+    }
+    #hero .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 16px 24px 48px;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero-topleft-img {
+      position: absolute;
+      top: 24px;
+      left: 20px;
+      width: clamp(220px, 68vw, 420px);
+      height: auto;
+      z-index: 3;
+    }
+    .hero-en-img {
+      width: clamp(180px, 55vw, 320px);
+      height: auto;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .hero-h1 {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: clamp(28px, 7.5vw, 48px);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .hero-catch {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      letter-spacing: 0.06em;
+      margin-bottom: 28px;
+    }
+    .hero-target {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 36px;
+    }
+    .hero-target-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--coral);
+      margin-bottom: 10px;
+    }
+    .hero-target p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+    }
+    .hero-target p + p { margin-top: 8px; }
+
+    /* ===== 2. 悩み・共感 ===== */
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .pain-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--coral-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .pain-check svg { width: 12px; height: 12px; }
+
+    /* ===== 3. 理想の未来 ===== */
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .benefit-item {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--coral);
+    }
+    .benefit-item h3 {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .benefit-item p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .benefit-arrow {
+      font-size: 13px;
+      color: var(--coral);
+      font-weight: 700;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--coral-light);
+    }
+
+    /* ===== 4. 体験セッション動画背景 ===== */
+    .flow-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      opacity: 0.45;
+    }
+    .flow-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(42, 53, 69, 0.72) 0%,
+        rgba(42, 53, 69, 0.60) 100%
+      );
+      z-index: 1;
+    }
+    /* テキスト色を白系に */
+    #flow .section-tag { color: #E8C5BB; }
+    #flow .section-heading { color: #FFFFFF; }
+    #flow .divider { background: rgba(255,255,255,0.4); }
+    #flow .section-sub { color: rgba(255,255,255,0.7); }
+    #flow .step-body h3 { color: #FFFFFF; }
+    #flow .step-body p { color: rgba(255,255,255,0.72); }
+    #flow .step-num { box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    #flow .steps-wrap::before { background: rgba(255,255,255,0.2); }
+
+    /* ===== 4. サービス内容（90分の流れ）===== */
+    .steps-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .steps-wrap::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 44px;
+      bottom: 44px;
+      width: 2px;
+      background: var(--coral-light);
+    }
+    .step-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      position: relative;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(201,112,96,0.3);
+    }
+    .step-num .num-label { font-size: 9px; letter-spacing: 0.05em; opacity: 0.85; }
+    .step-num .num-num { font-size: 22px; }
+    .step-body h3 {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      margin-top: 10px;
+    }
+    .step-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ===== 5. 選ばれる理由 ===== */
+    .reason-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text);
+    }
+    .reason-body p + p { margin-top: 16px; }
+    .quote-block {
+      background: var(--coral-light);
+      border-radius: 12px;
+      padding: 24px 20px;
+      margin: 28px 0;
+    }
+    .quote-block p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.85;
+    }
+    .quote-block p + p { margin-top: 8px; }
+    .quote-em {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-weight: 700;
+      color: var(--coral-dark);
+    }
+
+    /* ティッピングポイント図 */
+    .tipping-wrap {
+      position: relative;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px 16px 32px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      margin: 32px 0;
+      overflow: hidden;
+    }
+    .tipping-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .tipping-svg-wrap { width: 100%; }
+    .tipping-chart-labels {
+      position: relative;
+      margin-top: -10px;
+    }
+    .tipping-legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 16px;
+      font-size: 12px;
+    }
+    .tipping-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-line {
+      width: 24px;
+      height: 3px;
+      border-radius: 2px;
+    }
+    .legend-a { background: #B8AFA9; }
+    .legend-b { background: var(--coral); }
+
+    .tipping-text-labels {
+      position: relative;
+      margin-top: 8px;
+    }
+    .tip-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--coral-dark);
+      text-align: center;
+      background: var(--coral-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+    .tipping-point-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin: 8px auto;
+    }
+    .tipping-result-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text);
+      margin-top: 16px;
+    }
+    .tipping-result-text strong {
+      color: var(--coral-dark);
+      font-weight: 700;
+    }
+
+    /* 講師紹介 */
+    .instructor-wrap {
+      margin-top: 48px;
+    }
+    .instructor-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      max-height: 420px;
+    }
+    .instructor-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .instructor-story {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text);
+    }
+    .instructor-story p + p { margin-top: 14px; }
+    .instructor-story .highlight {
+      background: linear-gradient(transparent 60%, var(--coral-light) 60%);
+      font-weight: 700;
+    }
+    .instructor-expertise {
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ===== 6. お客様の声 ===== */
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .achievement-item {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .achievement-icon { margin: 0 auto 8px; }
+    .achievement-num {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--coral);
+      line-height: 1;
+    }
+    .achievement-unit { font-size: 13px; color: var(--coral); font-weight: 700; }
+    .achievement-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+
+    .activity-img {
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .activity-img img { width: 100%; object-fit: cover; }
+    .activity-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .voice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .voice-item {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .voice-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--coral);
+      background: var(--coral-light);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .voice-title {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .voice-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .voice-who {
+      font-size: 12px;
+      color: var(--gray-mid);
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .voice-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--coral-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .voice-icon svg { width: 18px; height: 18px; }
+    .voice-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .voice-header-text { flex: 1; }
+    .voice-disclaimer {
+      font-size: 11px;
+      color: var(--gray-mid);
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* ===== 7. 料金 ===== */
+    .price-box {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 2px solid var(--coral-light);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--coral);
+    }
+    .price-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .price-title {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .price-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .price-detail-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .price-detail-item svg { color: var(--coral); flex-shrink: 0; }
+    .price-original {
+      font-size: 14px;
+      color: var(--gray-mid);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .price-current {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--coral);
+      line-height: 1;
+    }
+    .price-current span { font-size: 18px; }
+    .price-tax { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .price-reason {
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 18px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.75;
+      text-align: left;
+      color: var(--text-muted);
+    }
+    .price-limit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #F5E8E3;
+      border: 2px solid var(--coral);
+      color: var(--coral-dark);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 12px;
+    }
+
+    /* ===== 8. FAQ ===== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item { border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+      transition: background 0.15s;
+      min-height: 44px;
+    }
+    .faq-question:hover { background: var(--cream-dark); }
+    .faq-q-mark {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .faq-arrow {
+      margin-left: auto;
+      flex-shrink: 0;
+      color: var(--coral);
+      transition: transform 0.25s;
+      margin-top: 2px;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 20px;
+    }
+    .faq-answer-inner {
+      padding-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    .faq-item.open .faq-answer { max-height: 600px; }
+
+    /* ===== 9. クロージング ===== */
+    #closing {
+      position: relative;
+      overflow: hidden;
+    }
+    .closing-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+      filter: saturate(0.5);
+    }
+    .closing-content { position: relative; z-index: 1; }
+    .closing-message {
+      font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+      font-size: clamp(18px, 5vw, 26px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .closing-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.75; }
+
+    /* お申込みの流れ */
+    .flow-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .flow-list::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 36px;
+      bottom: 36px;
+      width: 2px;
+      background: var(--coral-light);
+    }
+    .flow-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 14px 0;
+    }
+    .flow-num {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-body h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .flow-body p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* フォームエリア */
+    .form-placeholder {
+      background: var(--cream-dark);
+      border: 2px dashed var(--border);
+      border-radius: 16px;
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .form-placeholder p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+
+    /* ===== レスポンシブ（タブレット以上） ===== */
+    @media (min-width: 640px) {
+      .section { padding: 80px 32px; }
+      #hero .hero-content { padding: 64px 32px 72px; }
+      .achievement-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    }
+
+    /* ===== フォント統一 ===== */
+    .pain-list li { font-size: 14px; font-weight: 300; letter-spacing: 0.04em; line-height: 1.75; }
+    .benefit-item h3 { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; letter-spacing: 0.06em; font-size: 15px; }
+    .benefit-item p, .benefit-arrow { font-size: 13px; font-weight: 300; letter-spacing: 0.03em; }
+    .step-body h3 { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; letter-spacing: 0.08em; }
+    .step-body p { font-size: 13px; font-weight: 300; letter-spacing: 0.03em; }
+    .reason-body { font-size: 14px; font-weight: 300; letter-spacing: 0.05em; line-height: 2.0; }
+    .quote-block p { font-size: 14px; font-weight: 400; letter-spacing: 0.06em; line-height: 2.0; }
+    .instructor-story { font-size: 14px; font-weight: 300; letter-spacing: 0.05em; line-height: 2.0; }
+    .voice-title { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; letter-spacing: 0.06em; }
+    .voice-body { font-size: 13px; font-weight: 300; letter-spacing: 0.03em; line-height: 1.9; }
+    .voice-who { font-size: 11px; font-weight: 300; letter-spacing: 0.06em; }
+    .price-title { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; letter-spacing: 0.1em; font-weight: 500; }
+    .closing-message { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; letter-spacing: 0.1em; font-weight: 500; }
+    .faq-question { font-weight: 400; letter-spacing: 0.05em; }
+    .flow-body h4 { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-weight: 500; letter-spacing: 0.08em; }
+
+    /* ===== 画像ホバー・トランジション ===== */
+    .instructor-img-wrap img,
+    .activity-img img {
+      transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .instructor-img-wrap:hover img,
+    .activity-img:hover img {
+      transform: scale(1.03);
+    }
+
+    /* ===== クロージング（ネイビー背景）内テキスト ===== */
+    #closing .flow-body h4 { color: #FFFFFF; }
+    #closing .flow-body p { color: rgba(255,255,255,0.65); }
+    #closing .flow-list::before { background: rgba(255,255,255,0.15); }
+    #closing .flow-num { background: var(--coral); }
+    #closing .cta-note { color: rgba(255,255,255,0.75); }
+    #closing .form-placeholder {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.18);
+    }
+    #closing .form-placeholder p { color: rgba(255,255,255,0.55); }
+
+    /* ===== アクセシビリティ ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+    :focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== 1. ファーストビュー ===== -->
+<section id="hero" aria-label="ファーストビュー">
+  <img src="picture/breakthroughsession-2.png" alt="Vision Breakthrough Session" class="hero-topleft-img">
+  <img src="picture/187.jpg" alt="講師プロフィール写真" class="hero-slide active" loading="eager" fetchpriority="high">
+  <img src="picture/118.jpg" alt="講師がノートに書いている様子" class="hero-slide" loading="lazy">
+  <img src="picture/158.jpg" alt="講師がセッションをしている様子" class="hero-slide" loading="lazy">
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <h1 class="hero-h1">事業も、人生も、<br>もうひとつ上の景色へ</h1>
+    <p class="hero-catch">
+      止まっていた思考と行動が、動き出す90分。<br>
+      ビジョン・価値観・思考パターンを整理し、<br>
+      次のステージへの突破口を見つける。<br>
+      「できない理由」が、「どうしたらできる」へ。
+    </p>
+    <!-- CTA① -->
+    <div class="cta-wrap" style="margin-top:0;">
+      <p class="cta-note" style="color:rgba(255,255,255,0.9); font-size:14px; font-weight:700;">90分 ／ 通常33,000円 → <span style="color:#F5C4B4;">5,500円（税込）</span>　今月残り3枠</p>
+      <a href="#apply" class="btn-cta">ブレイクスルー体験セッションに申し込む</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 2. こんな"停滞感"、感じていませんか？ ===== -->
+<section class="section section--cream" id="pain" aria-label="停滞感チェック">
+  <div class="container">
+    <p class="section-tag fade-up">CHECK LIST</p>
+    <h2 class="section-heading fade-up delay-1">こんな"停滞感"、<br>感じていませんか？</h2>
+    <div class="divider fade-up delay-1" aria-hidden="true"></div>
+    <ul class="pain-list">
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        頑張っているのに、どこか"停滞感"が抜けない。
+      </li>
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        頭では分かっていても、無意識に行動を止めている感覚がある。
+      </li>
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        気づけば、やりたいことより、"できる範囲"で動いている。
+      </li>
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        売上や集客以前に、"なぜこの事業をやっているのか"が、ぼんやりしている。
+      </li>
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        学びも、人脈も増えているのに、この数年、事業が大きく発展していない。
+      </li>
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        本当は挑戦したいのに、"現実的に無理"と自分で制限してしまう。
+      </li>
+      <li>
+        <span class="pain-check" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        「このままで終わりたくない」という感覚がどこかにある。
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ===== 3. このセッションを受けると、どう変わる？ ===== -->
+<section class="section section--white" id="benefits" aria-label="セッションの効果">
+  <div class="container">
+    <p class="section-tag fade-up">TRANSFORMATION</p>
+    <h2 class="section-heading fade-up delay-1">このセッションを受けると、<br>どう変わる？</h2>
+    <div class="divider fade-up delay-1" aria-hidden="true"></div>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <h3>ビジョンや価値観が整理され、"本当に進みたい未来"が見えてくる</h3>
+        <p>目の前のタスクではなく、次のステージを基準に選択できるようになります。</p>
+        <p class="benefit-arrow">→ 迷っていた方向性に判断軸ができ、「やる・やらない」を即断できるようになります。</p>
+      </div>
+      <div class="benefit-item">
+        <h3>無意識にかけていたブレーキに気づき、止まっていた行動が自然と動き始める</h3>
+        <p>「頑張らなきゃ」ではなく、<em>"動きたくなる感覚"</em>が戻ってきます。</p>
+        <p class="benefit-arrow">→ 先延ばしにしていた新規施策やオファーに、自然と着手できるようになります。</p>
+      </div>
+      <div class="benefit-item">
+        <h3>「できる範囲」ではなく、"本当はやってみたい未来"を描ける</h3>
+        <p>挑戦することへのエネルギーが再起動していきます。</p>
+        <p class="benefit-arrow">→ 価格・規模・新規事業など、これまで避けていた挑戦に踏み出せるようになります。</p>
+      </div>
+      <div class="benefit-item">
+        <h3>思考や感情が整理され、今の課題や優先順位がクリアになる</h3>
+        <p>モヤモヤしていたものが言語化され、次の一歩が見えやすくなります。</p>
+        <p class="benefit-arrow">→ 限られた時間とリソースを、本当に成果につながることへ集中できるようになります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 4. 体験セッションの中身（90分の流れ）===== -->
+<section class="section" id="flow" aria-label="セッションの流れ" style="position:relative; overflow:hidden;">
+  <video
+    class="flow-bg-video"
+    src="picture/PXL_20250409_065554819~3.mp4"
+    autoplay muted loop playsinline
+    aria-hidden="true"
+  ></video>
+  <div class="flow-bg-overlay"></div>
+  <div class="container" style="position:relative; z-index:2;">
+    <p class="section-tag fade-up">SESSION FLOW</p>
+    <h2 class="section-heading fade-up delay-1">体験セッションの中身<br><span style="font-size:0.75em; font-weight:400;">90分の流れ</span></h2>
+    <div class="divider fade-up delay-1" aria-hidden="true"></div>
+    <div class="steps-wrap">
+      <div class="step-item fade-up delay-1">
+        <div class="step-num" aria-label="ステップ1">
+          <span class="num-label">STEP</span>
+          <span class="num-num">1</span>
+        </div>
+        <div class="step-body">
+          <h3>現状整理</h3>
+          <p>今感じている停滞感や課題を整理し、現在地を明確にします。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num" aria-label="ステップ2">
+          <span class="num-label">STEP</span>
+          <span class="num-num">2</span>
+        </div>
+        <div class="step-body">
+          <h3>ビジョンの再起動</h3>
+          <p>「本当はどう在りたいのか」「どんな未来を実現したいのか」を言語化します。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num" aria-label="ステップ3">
+          <span class="num-label">STEP</span>
+          <span class="num-num">3</span>
+        </div>
+        <div class="step-body">
+          <h3>アクションデザイン</h3>
+          <p>思考・行動パターンを整理し、次のステージへの突破口を見つけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 5. 選ばれる理由 ===== -->
+<section class="section section--white" id="reason" aria-label="選ばれる理由">
+  <div class="container">
+    <p class="section-tag fade-up">WHY THIS SESSION</p>
+    <h2 class="section-heading fade-up delay-1">選ばれる理由<br><span style="font-size:0.72em; font-weight:400;">なぜ、このセッションで突破口が見つかるのか</span></h2>
+    <div class="divider" aria-hidden="true"></div>
+
+    <div class="reason-body">
+      <p>多くのコンサルやセミナーは、「こうすればうまくいく」というやり方を渡します。でも、やり方だけでは、心がついていかない。仮に、一時的にうまくいっても、いずれ立ち行かなくなる。</p>
+      <p>だからこそ、このセッションで向き合うのは、その手前にある<strong>マインドセット</strong>です。</p>
+    </div>
+
+    <div class="quote-block">
+      <p><span class="quote-em">「お金がない」</span> ではなく <span class="quote-em">「どうすれば生み出せる？」</span></p>
+      <p><span class="quote-em">「私にはできない」</span> ではなく <span class="quote-em">「どうしたらできる？」</span></p>
+      <p><span class="quote-em">「いつかやりたい」</span> ではなく <span class="quote-em">「今できることは？」</span></p>
+    </div>
+
+    <div class="reason-body">
+      <p>同じ出来事でも、どこに立って世界を見るかで、選べる一手が変わります。</p>
+      <p>無理に自分を変えようとするのではなく、安心して本音を話せる関係性の中で、ビジョン・価値観・思考パターンを整理していく。</p>
+      <p>すると、自分でも気づいていなかった想いや可能性が見え、止まっていた思考や行動が、自然と動き始めます。</p>
+    </div>
+
+    <!-- ティッピングポイント図 -->
+    <div class="tipping-wrap">
+      <div class="tipping-labels">
+        <span>現在</span>
+        <span>時間の流れ</span>
+        <span>未来</span>
+      </div>
+
+      <!-- SVGチャート -->
+      <div class="tipping-svg-wrap">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="ティッピングポイント図：視点が切り替わることで成長曲線が大きく変わることを示す図" role="img" style="width:100%; height:auto;">
+          <!-- 軸 -->
+          <line x1="30" y1="160" x2="305" y2="160" stroke="#D1CBC5" stroke-width="1.5"/>
+          <line x1="30" y1="20" x2="30" y2="160" stroke="#D1CBC5" stroke-width="1.5"/>
+          <!-- 軸ラベル -->
+          <text x="15" y="90" font-size="9" fill="#B8AFA9" transform="rotate(-90, 15, 90)" text-anchor="middle">成長度</text>
+
+          <!-- 未来A（今の延長線）グレー破線 -->
+          <path d="M 30 140 L 130 120 L 310 105" stroke="#B8AFA9" stroke-width="2.5" fill="none" stroke-dasharray="6,4"/>
+
+          <!-- 塗りつぶしエリア（未来Aと未来Bの差） -->
+          <path d="M 130 120 L 310 105 L 310 45 L 130 120 Z" fill="#F5DDD7" opacity="0.5"/>
+
+          <!-- 未来B（視点が変わった先）コーラル実線 -->
+          <path d="M 30 140 L 130 120 C 180 108 240 75 310 45" stroke="#C97060" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+          <!-- ティッピングポイントのマーカー -->
+          <circle cx="130" cy="120" r="6" fill="#C97060"/>
+          <circle cx="130" cy="120" r="10" fill="#C97060" opacity="0.2"/>
+
+          <!-- ティッピングポイントラベル（垂直線） -->
+          <line x1="130" y1="120" x2="130" y2="160" stroke="#C97060" stroke-width="1.5" stroke-dasharray="4,3"/>
+        </svg>
+      </div>
+
+      <!-- テキストラベル -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:-8px; padding: 0 4px;">
+        <div></div>
+        <div style="text-align:center;">
+          <div class="tipping-point-badge" aria-label="ティッピングポイント（視点が切り替わる一点）">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            ティッピングポイント
+          </div>
+        </div>
+        <div></div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:16px; margin-top:8px; padding:0 4px;">
+        <span class="tip-label" style="background:#F0EDE9; color:#7A6E6A;">未来A（今の延長）</span>
+        <span class="tip-label">未来B（視点が変わった先）</span>
+      </div>
+
+      <div class="tipping-legend">
+        <div class="tipping-legend-item">
+          <div class="legend-line legend-a"></div>
+          <span style="font-size:11px; color:#7A6E6A;">未来A</span>
+        </div>
+        <div class="tipping-legend-item">
+          <div class="legend-line legend-b"></div>
+          <span style="font-size:11px; color:#7A6E6A;">未来B</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reason-body">
+      <p><strong>「昨日と同じ選択」を続けている限り、景色は大きく変わらない。</strong>行動量を増やしても、線の傾きそのものは変わらないからです。</p>
+      <p><strong>流れを変えるのは、努力の量ではなく、視点が切り替わる一点。</strong>小さな視点の転換や選択の変化が"ティッピングポイント"となり、その先の成長曲線を大きく変えていきます。</p>
+      <p>未来Aと未来Bを分けるのは、才能でも運でもなく、<strong>どこで視点を変えられるか</strong>。<br>その一点を一緒に見つけるのが、このセッションです。</p>
+    </div>
+
+    <!-- 講師紹介 -->
+    <div class="instructor-wrap">
+      <p class="section-tag" style="margin-top:16px;">INSTRUCTOR</p>
+      <p style="font-family:'Shippori Mincho','Noto Serif JP',serif; font-size:22px; font-weight:700; color:var(--text); margin-bottom:4px;">山田 佳代</p>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">コーチ ／ 脳科学×NVC（共感コミュニケーション）</p>
+      <h3 class="section-heading" style="font-size:clamp(18px,4.5vw,24px);">「まだ見たことのない未来」を、<br>一緒に見に行く伴走者でありたい。</h3>
+      <div class="divider" aria-hidden="true"></div>
+
+      <div class="instructor-img-wrap">
+        <img src="picture/094.jpg" alt="講師の笑顔のプロフィール写真" loading="lazy">
+      </div>
+
+      <div class="instructor-story">
+        <p>行動している。学んでいる。人にも会っている。<br>それなのに、どこか景色が変わらない。</p>
+        <p>かつての私も、同じでした。</p>
+        <p>料理教室をしていた頃、収入は月10万円ほど。「好きなことをさせてもらえている」「お客様にも喜んでもらえている」──それで十分だと、<span class="highlight">本当にやりたい挑戦から目をそらしていました。</span></p>
+        <p>転機は、ひとつの気づきでした。<br>自分の可能性を制限していたのは、ほかでもない自分自身だった、と。</p>
+        <p>そこから私は、自分の可能性を私以上に信じてくれる人に出逢い、たくさんの問いを投げてもらえる環境に身を置き、<span class="highlight">やり方（2割）より、在り方（8割）を整えること</span>に集中しました。</p>
+        <p>すると、自分にムチを打って事業を大きくするのではなく、運ばれるように、ご縁がつながっていく感覚が生まれてきました。</p>
+        <p>その"突破口が生まれる瞬間"に、これまで何度も立ち会ってきました。<br><strong>今度は、あなたの番です。</strong></p>
+      </div>
+
+      <div class="instructor-expertise">
+        脳科学とNVC（共感コミュニケーション）を土台にしたコーチングを、経営者への1on1から法人研修（コミュニケーション研修・社内コーチ育成・チームビルディング・各種セミナー）、学校支援プログラムまで、ニーズに合わせて提供しています。
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 6. 実際に変化された方の声 ===== -->
+<section class="section section--cream" id="voice" aria-label="お客様の声">
+  <div class="container">
+    <p class="section-tag fade-up">RESULTS &amp; VOICES</p>
+    <h2 class="section-heading fade-up delay-1">実際に変化された方の声</h2>
+    <div class="divider fade-up delay-1" aria-hidden="true"></div>
+
+    <!-- 実績数字 -->
+    <div class="achievement-grid" role="list" aria-label="実績数字">
+      <div class="achievement-item" role="listitem">
+        <svg class="achievement-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="11" r="6" stroke="#C97060" stroke-width="2"/>
+          <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#C97060" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <p class="achievement-num">40<span class="achievement-unit">名</span></p>
+        <p class="achievement-label">個別コーチング<br>実績</p>
+      </div>
+      <div class="achievement-item" role="listitem">
+        <svg class="achievement-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="11" stroke="#C97060" stroke-width="2"/>
+          <path d="M16 9v7l4 4" stroke="#C97060" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <p class="achievement-num">600<span class="achievement-unit">h</span></p>
+        <p class="achievement-label">年間<br>コーチング時間</p>
+      </div>
+      <div class="achievement-item" role="listitem">
+        <svg class="achievement-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="5" y="8" width="22" height="17" rx="2" stroke="#C97060" stroke-width="2"/>
+          <path d="M10 8V6M22 8V6" stroke="#C97060" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5 14h22" stroke="#C97060" stroke-width="1.5"/>
+        </svg>
+        <p class="achievement-num">3<span class="achievement-unit">軸</span></p>
+        <p class="achievement-label">個人・法人・<br>学校支援</p>
+      </div>
+    </div>
+
+    <!-- 活動風景 -->
+    <div class="activity-img">
+      <img src="picture/081.jpg" alt="オンラインセッションの様子" loading="lazy">
+      <p class="activity-caption">Zoomセッションの様子</p>
+    </div>
+
+    <!-- お客様の声 -->
+    <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">体験セッションを受けられた方、その先の継続サポートで変化された方の声をご紹介します。</p>
+    <div class="voice-list">
+
+      <div class="voice-item">
+        <span class="voice-tag">体験セッション</span>
+        <div class="voice-header">
+          <div class="voice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="voice-header-text"><h3 class="voice-title" style="margin-bottom:0;">説明される前に、直感で「この人だ」と感じました。</h3></div>
+        </div>
+        <p class="voice-body">山田佳代さんご自身が大変な時期を乗り越えられて、それを支えたのが、このコーチングだったと知りました。何より共感したのは、ご自身のビジネスのためではなく、かつて自分が苦しんだのと同じように悩んでいる人のお役に立ちたい──そんな想いでした。その想いが、私の心に響いたんです。正直に言うと、説明を受ける前から「この人だ」と直感のようなものを感じていました。</p>
+        <p class="voice-who">兵庫県 60代 不動産業 経営者 男性</p>
+      </div>
+
+      <div class="voice-item">
+        <span class="voice-tag">体験セッション</span>
+        <div class="voice-header">
+          <div class="voice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="voice-header-text"><h3 class="voice-title" style="margin-bottom:0;">力が足りないと思っていたら、すでに「ある」ものに気づけました。</h3></div>
+        </div>
+        <p class="voice-body">自信が持てないことも、ビジネスの広げ方が分からず悩んでいたことも、「自分の力が足りないからだ」とずっと思っていました。でもセッションで気づいたのは、力が足りないのではなく、すでに自分には"ある"ものがたくさんあって、ただ、そこにフォーカスできていなかっただけ、ということでした。</p>
+        <p class="voice-who">島根県 30代 管理栄養士 M.I様</p>
+      </div>
+
+      <div class="voice-item">
+        <span class="voice-tag">体験セッション</span>
+        <div class="voice-header">
+          <div class="voice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="voice-header-text"><h3 class="voice-title" style="margin-bottom:0;">自力では描けなかった「理想の未来」が見えて、力が湧いてきました。</h3></div>
+        </div>
+        <p class="voice-body">ひとりでは思い描けなかった"理想的な未来"を、一緒に想像する手伝いをしてもらいました。すると、自分が本当に求めているものが見えてきて、今の幸せに感謝しながらも、「もっと人生を楽しみたい」と素直に思えたんです。その未来を想像したら、叶えたくなりました。</p>
+        <p class="voice-who">広島県 50代 デザイナー A.K様</p>
+      </div>
+
+      <div class="voice-item">
+        <span class="voice-tag">継続サポート／法人導入</span>
+        <div class="voice-header">
+          <div class="voice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="voice-header-text"><h3 class="voice-title" style="margin-bottom:0; font-size:14px;">チームが各自の"軸"を持って動き出し、年商が5倍近くに。</h3></div>
+        </div>
+        <p class="voice-body">以前は、従業員のマインド管理をすべて自分で抱え込んでいて、経営者としての負担がとても大きい状態でした。約1年かけて、社長への1on1とチーム全体の研修を重ねる中で、メンバー一人ひとりが自分の軸を持ち、主体的に仕事へ向かうようになっていきました。一人ひとりの自己成長を後押ししてもらえたことで、気づけば年商が5倍近くに跳ね上がっていました。</p>
+        <p class="voice-who">事務・SNS代行トータルサポート会社　経営者</p>
+      </div>
+
+      <div class="voice-item">
+        <span class="voice-tag">継続サポート</span>
+        <div class="voice-header">
+          <div class="voice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="voice-header-text"><h3 class="voice-title" style="margin-bottom:0;">何年も踏み出せなかった私が、初成約と35万円の売上に。</h3></div>
+        </div>
+        <p class="voice-body">学びを繰り返すばかりで何年も動けずにいましたが、自分軸で商品を作り、有料モニターに10名が集まって35万円の売上に。お給料以外で収入を得たのは初めてで、胸がいっぱいになりました。その後も28万円の商品を成約できました。</p>
+        <p class="voice-who">京都府 40代 鉱物療法士 S.T様</p>
+      </div>
+
+      <div class="voice-item">
+        <span class="voice-tag">継続サポート</span>
+        <div class="voice-header">
+          <div class="voice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div class="voice-header-text"><h3 class="voice-title" style="margin-bottom:0;">3か月止まっていたSNS発信が、ブレーキをゆるめたら6時間で10名満席に。</h3></div>
+        </div>
+        <p class="voice-body">間が空くほど「ちゃんとやらなきゃ」と動けなくなっていましたが、ブレーキをゆるめてもらったら気持ちが軽くなり、「できることをやってみよう」と再開。募集開始から6時間で10名満席になりました。</p>
+        <p class="voice-who">兵庫県 40代 幸運覚醒プロデューサー 小林ゆかり様</p>
+      </div>
+
+    </div>
+    <p class="voice-disclaimer">※成果には個人差があります。</p>
+
+    <!-- CTA② -->
+    <div class="cta-wrap">
+      <p class="cta-note">あなたの"突破口"を、一緒に見つけにいきませんか。</p>
+      <a href="#apply" class="btn-cta">ブレイクスルー体験セッションに申し込む</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 7. 料金・お申込み条件 ===== -->
+<section class="section section--white" id="price" aria-label="料金案内">
+  <div class="container">
+    <p class="section-tag fade-up">PRICING</p>
+    <h2 class="section-heading fade-up delay-1">体験セッションのご案内</h2>
+    <div class="divider fade-up delay-1" aria-hidden="true"></div>
+
+    <div class="price-box fade-up delay-2">
+      <div class="price-badge" aria-label="今月3名様限定">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        今月3名様限定
+      </div>
+      <h3 class="price-title">ブレイクスルー体験セッション</h3>
+      <div class="price-details" aria-label="セッション詳細">
+        <div class="price-detail-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>90分</span>
+        </div>
+        <div class="price-detail-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>対面 / Zoom 対応</span>
+        </div>
+        <div class="price-detail-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C97060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>事前アンケートあり</span>
+        </div>
+      </div>
+      <p class="price-original">通常価格 33,000円（税込）</p>
+      <p class="price-current"><span>¥</span>5,500<span>円</span></p>
+      <p class="price-tax">税込 / 特別価格</p>
+
+      <div class="price-reason">
+        <strong>特別価格でご案内する理由</strong><br>
+        本来このセッションは、継続でサポートしている方に向けた内容です。それでも単発・特別価格でご案内しているのは、「まずは突破口が見つかる感覚を、実際に体験してほしい」から。そして、お互いの相性を確かめる場にしてほしいからです。<br>
+        ただ、お一人おひとりに本気で向き合うため、お受けできる人数を絞っています。
+      </div>
+
+      <div class="price-limit" aria-label="今月の体験枠：3名様限定">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        今月の体験枠：3名様限定
+      </div>
+
+      <div style="margin-top:24px; text-align:left; background:var(--cream-dark); border-radius:12px; padding:18px 20px;">
+        <p style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">お支払い・その他</p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:7px;">
+          <li style="font-size:13px; color:var(--text-muted); display:flex; gap:8px; align-items:flex-start;">
+            <span style="color:var(--coral); font-weight:700; flex-shrink:0;">✓</span>お支払い方法：銀行振込 / クレジットカード対応
+          </li>
+          <li style="font-size:13px; color:var(--text-muted); display:flex; gap:8px; align-items:flex-start;">
+            <span style="color:var(--coral); font-weight:700; flex-shrink:0;">✓</span>対面開催の場所：お申し込み後にご相談の上、日程・場所を決めます
+          </li>
+          <li style="font-size:13px; color:var(--text-muted); display:flex; gap:8px; align-items:flex-start;">
+            <span style="color:#B8AFA9; font-weight:700; flex-shrink:0;">！</span>キャンセル・返金：お申し込み後のキャンセル・返金には対応しておりません。あらかじめご了承ください。
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA③ -->
+    <div class="cta-wrap">
+      <p class="cta-note">枠が埋まる前に、最初の一歩を。</p>
+      <a href="#apply" class="btn-cta">ブレイクスルー体験セッションに申し込む</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 8. よくあるご質問 ===== -->
+<section class="section section--cream" id="faq" aria-label="よくあるご質問">
+  <div class="container">
+    <p class="section-tag fade-up">FAQ</p>
+    <h2 class="section-heading fade-up delay-1">よくあるご質問</h2>
+    <div class="divider fade-up delay-1" aria-hidden="true"></div>
+    <div class="faq-list fade-up delay-2">
+
+      <div class="faq-item" id="faq1">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" onclick="toggleFaq(this)">
+          <span class="faq-q-mark" aria-hidden="true">Q</span>
+          <span>何をするセッションですか？</span>
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-button">
+          <div class="faq-answer-inner">
+            現在感じている停滞感や課題を整理しながら、「本当はどう在りたいのか」「どんな未来を実現したいのか」を言語化していく90分のセッションです。ビジョン・価値観・思考パターンを整理することで、次のステージへの突破口を見つけていきます。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq2">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" onclick="toggleFaq(this)">
+          <span class="faq-q-mark" aria-hidden="true">Q</span>
+          <span>まだやりたいことが明確じゃなくても受けられますか？</span>
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region">
+          <div class="faq-answer-inner">
+            はい、大丈夫です。「やりたいことが分からない」「何が引っかかっているのか整理できない」、そんな状態の方こそ、セッションを通して、自分でも気づいていなかった本音や可能性が見えてくることがあります。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq3">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" onclick="toggleFaq(this)">
+          <span class="faq-q-mark" aria-hidden="true">Q</span>
+          <span>コンサルや自己分析との違いは何ですか？</span>
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region">
+          <div class="faq-answer-inner">
+            「こうした方がいい」という答えを渡すのではなく、安心して本音を話せる関係性の中で、ビジョン・価値観・思考パターンを整理していくセッションです。無理に頑張るのではなく、「自分から動きたくなる感覚」を大切にしています。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq4">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" onclick="toggleFaq(this)">
+          <span class="faq-q-mark" aria-hidden="true">Q</span>
+          <span>無理に高額講座へ案内されませんか？</span>
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region">
+          <div class="faq-answer-inner">
+            無理な勧誘は一切ありません。必要な方にのみ、「この未来をもっと加速させたい」と感じた場合の選択肢として、継続サポートをご案内することがあります。まずは、安心して体験セッションを受けていただけたら嬉しいです。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq5">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" onclick="toggleFaq(this)">
+          <span class="faq-q-mark" aria-hidden="true">Q</span>
+          <span>経営や事業の相談をしても大丈夫ですか？</span>
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region">
+          <div class="faq-answer-inner">
+            もちろん大丈夫です。売上や集客だけではなく、「なぜこの事業をやっているのか」「本当はどんな未来を実現したいのか」「どこで無意識にブレーキをかけているのか」まで含めて整理していくことで、事業の方向性や次の一歩がクリアになる方も多くいらっしゃいます。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQ後CTA -->
+    <div class="cta-wrap" style="margin-top:40px;">
+      <p class="cta-note">気になることは解消できましたか？ まずは一歩、踏み出してみませんか。</p>
+      <a href="#apply" class="btn-cta">ブレイクスルー体験セッションに申し込む</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 9. クロージング・申込みの流れ・フォーム ===== -->
+<section class="section" id="closing" aria-label="お申込み" style="background: var(--navy); position:relative; overflow:hidden;">
+  <img src="picture/220.jpg" alt="" class="closing-bg" aria-hidden="true" loading="lazy" style="opacity:0.08;">
+  <div class="container closing-content">
+    <p class="section-tag" style="color:var(--coral-light);">TAKE THE FIRST STEP</p>
+    <p class="closing-message" style="color:#FFFFFF;">「このままで終わりたくない」<br>その感覚は、次のステージへのサインです。</p>
+    <p class="closing-sub" style="color:rgba(255,255,255,0.72);">
+      変わるために必要なのは、もっと頑張ることではなく、一度立ち止まること。<br>
+      事業も、人生も、もうひとつ上の景色へ。
+    </p>
+
+    <h3 style="font-family:'Shippori Mincho','Noto Serif JP',serif; font-size:18px; font-weight:700; margin-bottom:24px; color:#FFFFFF;">お申込みの流れ</h3>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-num" aria-label="ステップ1">1</div>
+        <div class="flow-body">
+          <h4>お申し込み</h4>
+          <p>フォームから必要事項をご入力ください。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num" aria-label="ステップ2">2</div>
+        <div class="flow-body">
+          <h4>日程調整</h4>
+          <p>こちらからご連絡し、開催日時を決めていきます。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num" aria-label="ステップ3">3</div>
+        <div class="flow-body">
+          <h4>事前アンケート</h4>
+          <p>当日に向けて、今感じていることをお聞かせください。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num" aria-label="ステップ4">4</div>
+        <div class="flow-body">
+          <h4>セッション当日</h4>
+          <p>90分、対面またはZoomで実施します。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA④ 最終 -->
+    <div id="apply" style="scroll-margin-top: 24px;">
+      <div class="cta-wrap" style="margin-top:0;">
+        <p class="cta-note">事業も、人生も、もうひとつ上の景色へ</p>
+        <a href="#apply-form" class="btn-cta" style="font-size:15px; padding:20px 28px;">ブレイクスルー体験セッションに申し込む</a>
+      </div>
+
+      <!-- フォームエリア（リンク挿入予定） -->
+      <div class="form-placeholder" id="apply-form" style="margin-top:32px; scroll-margin-top:24px;">
+        <p>こちらに申込みフォームが入ります。<br>（エルメ等のフォームURLをリンクまたは埋め込みで設置してください）</p>
+        <a href="#" class="btn-cta" style="font-size:14px; padding:14px 24px; min-width:auto; opacity:0.5; pointer-events:none; cursor:not-allowed;" aria-disabled="true">申込みフォームへ（準備中）</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== フッター ===== -->
+<footer>
+  <p>© 2026 山田 佳代 / ブレイクスルー体験セッション. All rights reserved.</p>
+  <p style="margin-top:8px;"><a href="#">特定商取引法に基づく表記</a>（後日設置）</p>
+</footer>
+
+
+<script>
+  // ===== ヒーロークロスフェード＋パンスライドショー =====
+  (function() {
+    var slides = document.querySelectorAll('.hero-slide');
+    var current = 0;
+
+    function activateSlide(el) {
+      // アニメーションをリセットして再生
+      el.style.animation = 'none';
+      el.offsetHeight; // reflow
+      el.style.animation = '';
+      el.classList.add('active');
+    }
+
+    // 最初の1枚を起動
+    activateSlide(slides[current]);
+
+    setInterval(function() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      activateSlide(slides[current]);
+    }, 6000); // 6秒ごとに切り替え
+  })();
+
+  // ===== Intersection Observer: スクロールフェードアップ =====
+  (function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+
+  // ===== FAQ アコーディオン =====
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    // 全て閉じる
+    document.querySelectorAll('.faq-item').forEach(function(el) {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+
+    // クリックしたものを開く（すでに開いていたら閉じたまま）
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>
+
+</body>
+</html>
