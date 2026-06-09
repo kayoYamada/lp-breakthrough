@@ -25,8 +25,8 @@
 
     /* ===== ヒーロースライドショー ===== */
     @keyframes heroPan {
-      0%   { transform: scale(1.08) translateX(24px); }
-      100% { transform: scale(1.03) translateX(-8px); }
+      0%   { transform: scale(1.12) translateX(8px); }
+      100% { transform: scale(1.06) translateX(-8px); }
     }
 
     /* ===== スクロールフェードアップ ===== */
@@ -160,13 +160,13 @@
       object-fit: cover;
       object-position: center top;
       opacity: 0;
-      transition: opacity 2.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 1.8s ease-in-out;
       transform-origin: center center;
       will-change: transform, opacity;
+      animation: heroPan 10s ease-in-out infinite alternate;
     }
     .hero-slide.active {
       opacity: 0.65;
-      animation: heroPan 7s ease-in-out forwards;
     }
     #hero .hero-overlay {
       position: absolute;
@@ -1564,22 +1564,14 @@
     var slides = document.querySelectorAll('.hero-slide');
     var current = 0;
 
-    function activateSlide(el) {
-      // アニメーションをリセットして再生
-      el.style.animation = 'none';
-      el.offsetHeight; // reflow
-      el.style.animation = '';
-      el.classList.add('active');
-    }
-
-    // 最初の1枚を起動
-    activateSlide(slides[current]);
+    // 最初の1枚を表示
+    slides[current].classList.add('active');
 
     setInterval(function() {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
-      activateSlide(slides[current]);
-    }, 6000); // 6秒ごとに切り替え
+      slides[current].classList.add('active');
+    }, 4500); // 4.5秒ごとに切り替え
   })();
 
   // ===== Intersection Observer: スクロールフェードアップ =====
